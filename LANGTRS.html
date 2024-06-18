@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <h2>Language Translator</h2>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bodyy {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .txt-in {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #voiceIco {
+            margin-left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #convert {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .txt-ln, .trns-ln {
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .trslte {
+            text-align: center;
+        }
+
+        #button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Background colors */
+        .txt-in, .txt-ln, .trns-ln, .trslte {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 4px;
+        }
+</style>
+<body>
+    <div class="bodyy">
+        <div class="txt-in">
+            <input type="text" placeholder="Type Here" id="search">
+            <span id="voiceIco">🔈</span>
+            <button id="convert">Text to Speech</button>
+        </div>
+        <div class="txt-ln">
+            <h6>Translate From</h6>
+            <select name="type" id="input-text">
+                <option value="English">English</option>
+                <option value="Telugu">Telugu</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Arabic">Arabic</option>
+                <option value="French">French</option>
+                <option value="Bengali">Bengali</option>
+                <option value="Czech">Czech</option>
+                <option value="Italian">Italian</option>
+                <option value="Greek">Greek</option>
+                <option value="Catalan">Catalan</option>
+                <option value="Croatian">Croatian</option>
+                <option value="Sinhala">Sinhala</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Slovak">Slovak</option>
+                <option value="German">German</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Gujarati">Gujarati</option>
+                <option value="Indonesian">Indonesian</option>
+                <option value="Albanian">Albanian</option>
+                <option value="Urdu">Urdu</option>
+                <option value="Korean">Korean</option>
+                <option value="Dutch">Dutch</option>
+                <option value="Pashto">Pashto</option>
+                <option value="Romanian">Romanian</option>
+                <option value="Latvian">Latvian</option>
+                <option value="Danish">Danish</option>
+                <option value="Norwegian">Norwegian</option>
+                <option value="Punjabi">Punjabi</option>
+                <option value="Ukrainian">Ukrainian</option>
+                <option value="Polish">Polish</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Swedish">Swedish</option>
+                <option value="Maldivian">Maldivian</option>
+
+            </select>
+        </div>
+        <div class="trns-ln">
+            <h6>Translate To</h6>
+            <select name="type" id="tran-text">
+                <option value="English">English</option>
+                <option value="Telugu">Telugu</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Arabic">Arabic</option>
+                <option value="French">French</option>
+                <option value="Bengali">Bengali</option>
+                <option value="Czech">Czech</option>
+                <option value="Italian">Italian</option>
+                <option value="Greek">Greek</option>
+                <option value="Catalan">Catalan</option>
+                <option value="Croatian">Croatian</option>
+                <option value="Sinhala">Sinhala</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Slovak">Slovak</option>
+                <option value="German">German</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Gujarati">Gujarati</option>
+                <option value="Indonesian">Indonesian</option>
+                <option value="Urdu">Urdu</option>
+                <option value="Albanian">Albanian</option>
+                <option value="Korean">Korean</option>
+                <option value="Dutch">Dutch</option>
+                <option value="Pashto">Pashto</option>
+                <option value="Romanian">Romanian</option>
+                <option value="Latvian">Latvian</option>
+                <option value="Danish">Danish</option>
+                <option value="Norwegian">Norwegian</option>
+                <option value="Punjabi">Punjabi</option>
+                <option value="Ukrainian">Ukrainian</option>
+                <option value="Polish">Polish</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Swedish">Swedish</option>
+                <option value="Maldivian">Maldivian</option>
+
+            </select>
+        </div>
+        <div class="trslte"><button id="button" onclick="Hello()">Translate</button></div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const call =  async (data,one,two) => {
+        console.log(data,one,two)
+        const url = 'https://text-translator2.p.rapidapi.com/translate';
+        const options = {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'X-RapidAPI-Key': '68c8518118msh8aae076a78539b2p1147b9jsne8d887be7365',
+                'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
+            },
+            body: new URLSearchParams({
+                source_language: one,
+                target_language: two,
+                text: data
+                })
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json()
+                document.getElementById('output').innerText = result.data.translatedText
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    const Hello = () =>{
+        const languages = {
+            "am": "Amharic",
+            "ar": "Arabic",
+            "be": "Bielarus",
+            "bem": "Bemba",
+            "bi": "Bislama",
+            "bjs": "Bajan",
+            "bn": "Bengali",
+            "bo": "Tibetan",
+            "br": "Breton",
+            "bs": "Bosnian",
+            "ca": "Catalan",
+            "cop": "Coptic",
+            "cs": "Czech",
+            "cy": "Welsh",
+            "da": "Danish",
+            "dz": "Dzongkha",
+            "de": "German",
+            "dv": "Maldivian",
+            "el": "Greek",
+            "en": "English",
+            "es": "Spanish",
+            "et": "Estonian",
+            "eu": "Basque",
+            "fa": "Persian",
+            "fi": "Finnish",
+            "fn": "Fanagalo",
+            "fo": "Faroese",
+            "fr": "French",
+            "gl": "Galician",
+            "gu": "Gujarati",
+            "ha": "Hausa",
+            "he": "Hebrew",
+            "hi": "Hindi",
+            "hr": "Croatian",
+            "hu": "Hungarian",
+            "id": "Indonesian",
+            "is": "Icelandic",
+            "it": "Italian",
+            "ja": "Japanese",
+            "kk": "Kazakh",
+            "km": "Khmer",
+            "kn": "Kannada",
+            "ko": "Korean",
+            "ku": "Kurdish",
+            "ky": "Kyrgyz",
+            "la": "Latin",
+            "lo": "Lao",
+            "lv": "Latvian",
+            "men": "Mende",
+            "mg": "Malagasy",
+            "mi": "Maori",
+            "ms": "Malay",
+            "mt": "Maltese",
+            "my": "Burmese",
+            "ne": "Nepali",
+            "niu": "Niuean",
+            "nl": "Dutch",
+            "no": "Norwegian",
+            "ny": "Nyanja",
+            "ur": "Pakistani",
+            "pau": "Palauan",
+            "pa": "Panjabi",
+            "ps": "Pashto",
+            "pis": "Pijin",
+            "pl": "Polish",
+            "pt": "Portuguese",
+            "rn": "Kirundi",
+            "ro": "Romanian",
+            "ru": "Russian",
+            "sg": "Sango",
+            "si": "Sinhala",
+            "sk": "Slovak",
+            "sm": "Samoan",
+            "sn": "Shona",
+            "so": "Somali",
+            "sq": "Albanian",
+            "sr": "Serbian",
+            "sv": "Swedish",
+            "sw": "Swahili",
+            "ta": "Tamil",
+            "te": "Telugu",
+            "tet": "Tetum",
+            "tg": "Tajik",
+            "th": "Thai",
+            "ti": "Tigrinya",
+            "tk": "Turkmen",
+            "tl": "Tagalog",
+            "tn": "Tswana",
+            "to": "Tongan",
+            "tr": "Turkish",
+            "uk": "Ukrainian",
+            "uz": "Uzbek",
+            "vi": "Vietnamese",
+            "wo": "Wolof",
+            "xh": "Xhosa",
+            "yi": "Yiddish",
+            "zu": "Zulu",
+        };
+
+        function swap(json){
+        var ret = {};
+        for(var key in json){
+            ret[json[key]] = key;
+        }
+        return ret;
+        }
+        const req = swap(languages)
+        const variable = document.getElementById('search').value
+        const inputtext = document.getElementById('input-text').value
+        const trantext = document.getElementById('tran-text').value
+        // console.log(variable,req[inputtext],req.trantext)
+        let out = call(variable,req[inputtext],req[trantext])
+    }
+        
+    
+
+    </script>
+    <script>
+        var convert = document.getElementById('convert'),
+        voiceIco = document.getElementById('voiceIco'),
+        speech  = document.getElementById('search'),
+        count = 1;
+        speech.addEventListener('change',function(){
+            speechText = this.value;
+            speechSynthesis.cancel();
+            convert.innerHTML = "Text to Speech";
+            voiceIco.innerHTML="🔈";
+        });
+        convert.addEventListener('click',function(){
+            if(!speechSynthesis.speaking || speechSynthesis.pause()){
+                speechText = speech.value;
+                var speechVoice = new SpeechSynthesisUtterance();
+                var voices = speechSynthesis.getVoices();
+                speechVoice.voice = voices[2];
+                speechVoice.text = speechText;
+                speechVoice.lang = 'en-US';
+                speechSynthesis.speak(speechVoice);  
+            }
+        if(count == 1){
+                convert.innerHTML = "Play";
+                voiceIco.innerHTML="🔊";
+                speechSynthesis.resume()
+                setTimeout(() => {
+                    count = 2;
+                }, 300);
+        }else{
+                speechSynthesis.paused
+                convert.innerHTML = "Pause";
+                voiceIco.innerHTML="🔈";
+                count = 1;
+        }
+        setInterval(() => {
+                if(!speechSynthesis.speaking && count == 2){
+                    convert.innerHTML = "Text to Speech";
+                    voiceIco.innerHTML="🔈";
+                    count = 1;
+                    console.log(count)
+                }
+            },100);
+            })
+
+
+/*for(xx in new SpeechSynthesisUtterance()){
+  console.log(xx)
+}*/
+    </script>
+</body>
+</html>
